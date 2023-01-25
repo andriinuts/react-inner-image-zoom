@@ -1,7 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const Image = ({ src, sources, width, height, hasSpacer, imgAttributes, isZoomed, fadeDuration }) => {
+const Image = ({
+  src,
+  sources,
+  width,
+  height,
+  hasSpacer,
+  imgAttributes,
+  isZoomed,
+  fadeDuration,
+  imgComponent: ImgComponent
+}) => {
   const createSpacer = width && height && hasSpacer;
 
   return (
@@ -12,7 +22,7 @@ const Image = ({ src, sources, width, height, hasSpacer, imgAttributes, isZoomed
             return <Fragment key={i}>{source.srcSet && <source {...source} />}</Fragment>;
           })}
 
-          <img
+          <ImgComponent
             {...imgAttributes}
             className={`iiz__img ${imgAttributes.className || ''} ${isZoomed ? 'iiz__img--hidden' : ''} ${
               createSpacer ? 'iiz__img--abs' : ''
@@ -28,7 +38,7 @@ const Image = ({ src, sources, width, height, hasSpacer, imgAttributes, isZoomed
           />
         </picture>
       ) : (
-        <img
+        <ImgComponent
           {...imgAttributes}
           className={`iiz__img ${imgAttributes.className || ''} ${isZoomed ? 'iiz__img--hidden' : ''} ${
             createSpacer ? 'iiz__img--abs' : ''
@@ -54,6 +64,7 @@ Image.propTypes = {
   height: PropTypes.number,
   hasSpacer: PropTypes.bool,
   imgAttributes: PropTypes.object,
+  imgComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string, PropTypes.object]).isRequired,
   fadeDuration: PropTypes.number,
   isZoomed: PropTypes.bool
 };

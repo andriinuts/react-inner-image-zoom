@@ -1,14 +1,16 @@
 {
-  "name": "react-inner-image-zoom",
-  "version": "3.0.2",
+  "name": "custom-react-inner-image-zoom",
+  "version": "3.0.6",
   "description": "A React component for magnifying an image within its original container.",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "typings": "lib/index",
   "files": [
     "css",
     "es",
     "lib",
-    "umd"
+    "umd",
+    "ts"
   ],
   "scripts": {
     "build": "nwb build-react-component --copy-files",
@@ -44,7 +46,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/laurenashpole/react-inner-image-zoom.git"
+    "url": "https://github.com/andriinuts/react-inner-image-zoom"
   },
   "bugs": {
     "url": "https://github.com/laurenashpole/react-inner-image-zoom/issues"

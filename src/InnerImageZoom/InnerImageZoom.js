@@ -13,6 +13,8 @@ const InnerImageZoom = ({
   height,
   hasSpacer,
   imgAttributes = {},
+  imgComponent = 'img',
+  zoomImgComponent = 'img',
   zoomSrc,
   zoomScale = 1,
   zoomPreload,
@@ -271,7 +273,8 @@ const InnerImageZoom = ({
     onDragStart: currentMoveType === 'drag' ? handleDragStart : null,
     onDragEnd: currentMoveType === 'drag' ? handleDragEnd : null,
     onClose: !hideCloseButton && currentMoveType === 'drag' ? handleClose : null,
-    onFadeOut: isFading ? handleFadeOut : null
+    onFadeOut: isFading ? handleFadeOut : null,
+    imgComponent: zoomImgComponent
   };
 
   useEffect(() => {
@@ -316,6 +319,7 @@ const InnerImageZoom = ({
         imgAttributes={imgAttributes}
         fadeDuration={fadeDuration}
         isZoomed={isZoomed}
+        imgComponent={imgComponent}
       />
 
       {isActive && (
@@ -344,6 +348,8 @@ InnerImageZoom.propTypes = {
   height: PropTypes.number,
   hasSpacer: PropTypes.bool,
   imgAttributes: PropTypes.object,
+  imgComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string, PropTypes.object]),
+  zoomImgComponent: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string, PropTypes.object]),
   zoomSrc: PropTypes.string,
   zoomScale: PropTypes.number,
   zoomPreload: PropTypes.bool,
